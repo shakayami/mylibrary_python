@@ -1,6 +1,6 @@
 characteristic=10**9+7
 def plus(input1,input2):
-    return (input1+input1)%characteristic
+    return (input1+input2)%characteristic
 def minus(input1,input2):
     return (input1-input2)%characteristic
 def times(input1,input2):
