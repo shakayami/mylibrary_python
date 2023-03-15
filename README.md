@@ -4,6 +4,8 @@
 [ACL-for-Python](https://github.com/shakayami/ACL-for-python)
 も参照
 
+ここにあるコードは好きに参考にしたりパクったりして、どうぞ。
+
 ## numfunc
 - エラトステネスのふるいO(NloglogN)
 - メビウス関数O(NloglogN)
