@@ -1,79 +1,54 @@
-def gcd(x, y):
-    a = max([x, y])
-    b = min([x, y])
-    if a % b == 0:
-        return b
-    else:
-        return gcd(b, a % b)
+from math import gcd
+from collections import Counter
 
+#最大公約数
+def lcm(x,y):
+    return (x*y)//gcd(x,y)
 
-def lcm(x, y):
-    return (x * y) // gcd(x, y)
+#素因数分解
+def prime_fact(N):
+    res=Counter()
+    p=2
+    while(p*p<=N):
+        while(N%p==0):
+            N//=p
+            res[p]+=1
+        p+=1
+    if N>1:
+        res[N]+=1
+    return res
 
+#約数列挙
+def divisors(N):
+    PF=prime_fact(N)
+    res=[1]
+    for p,e in PF.items():
+        k=len(res)
+        for i in range(k*e):
+            res.append(res[i]*p)
+    return res
 
-def Primelist(N):
-    Q = [True for i in range(N+1)]
-    Q[0] = False
-    Q[1] = False
-    for i in range(2, N + 1):
-        if Q[i] == True:
-            for j in range(2 * i, N + 1, i):
-                Q[j] = False
-    P = []
-    for i in range(N + 1):
-        if Q[i]:
-            P.append(i)
-    return P
-
-
-def PrimeFact(N):
-    PF = []
-    M = N
-    k = 2
-    while (True):
-        od = 0
-        if M % k == 0:
-            while (True):
-                if M % k == 0:
-                    od += 1
-                    M = M // k
-                else:
-                    break
-            PF.append([k, od])
-        else:
-            k += 1
-        if M == 1:
-            break
-    return PF
-
-
-def Sigma(N):
-    S = 1
-    pf = PrimeFact(N)
-    for a in pf:
-        S = S * (a[0] ** (a[1] + 1) - 1) // (a[0] - 1)
-    return S
-
-
-def Phi(N):
-    S = N
-    pf = PrimeFact(N)
-    for a in pf:
-        S = (S * (a[0] - 1)) // a[0]
-    return S
-
-
-def Div(N):
-    S = 1
-    pf = PrimeFact(N)
-    for a in pf:
-        S = S * (1 + a[1])
-    return S
-
-
-def Rad(N):
-    S = 1
-    pf = PrimeFact(N)
-    for a in pf:
-        S = S * a[0]
-    return S
+#エラトステネスのふるい
+MAX_N=10**5
+isPrime=[True for i in range(MAX_N+1)]
+isPrime[0]=False;isPrime[1]=False
+for i in range(MAX_N):
+    if isPrime[i]:
+        for j in range(2*i,MAX_N,i):
+            isPrime[j]=False
+print(isPrime[:10])
+#[False, False, True, True, False, True, False, True, False, False]
+#メビウス関数
+Mebius=[1 for i in range(MAX_N+1)]
+Mebius[0]=0
+for i in range(MAX_N+1):
+    if isPrime[i]:
+        for j in range(i,MAX_N,i):
+            Mebius[j]*=-1
+i=2
+while(i*i<=MAX_N):
+    for j in range(i*i,MAX_N,i*i):
+        Mebius[j]=0
+    i+=1
+print(Mebius[:20])
+#[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1, -1, 0, -1, 1, 1, 0, -1, 0, -1]
