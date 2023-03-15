@@ -3,3 +3,9 @@
 
 [ACL-for-Python](https://github.com/shakayami/ACL-for-python)
 も参照
+
+## numfunc
+エラトステネスのふるいO(NloglogN)
+メビウス関数O(NloglogN)
+素因数分解O(√N)
+約数列挙O(√N)
