@@ -1,22 +1,22 @@
-characteristic=10**9+7
-def plus(input1,input2):
-    return (input1+input2)%characteristic
-def minus(input1,input2):
-    return (input1-input2)%characteristic
-def times(input1,input2):
-    return (input1*input2)%characteristic
-def exponen(input1,input2):
-    binaryl=list(str(bin(input2))[2:])
-    binarysize=len(binaryl)
-    binarylist=[int(binaryl[binarysize-1-i]) for i in range(binarysize)]
-    modlist=[0 for i in range(binarysize)]
-    modlist[0]=input1
-    for i in range(1,binarysize):
-        modlist[i]=times(modlist[i-1],modlist[i-1])
-    answer=1
-    for i in range(binarysize):
-        if binarylist[i]==1:
-            answer=times(answer,modlist[i])
-    return answer
-def divide(input1,input2):
-    return times(input1,exponen(input2,characteristic-2))
+mod=998244353
+#もしくは
+#mod=10**9+7
+def inv(x):
+    assert x!=0
+    return pow(x,mod-2,mod)
+
+MAX_N=10**5
+Fact=[0 for i in range(MAX_N+1)]
+Fact[0]=1
+for i in range(MAX_N):
+    Fact[i+1]=((i+1)*Fact[i])%mod
+Finv=[0 for i in range(MAX_N+1)]
+Finv[MAX_N]=inv(Fact[MAX_N])
+for i in range(MAX_N-1,-1,-1):
+    Finv[i]=((i+1)*Finv[i+1])%mod
+
+def binomial(n,k):
+    if 0<=k and k<=n:
+        return Fact[n]*Finv[k]%mod*Finv[n-k]%mod
+    else:
+        return 0
