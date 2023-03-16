@@ -15,3 +15,9 @@
 ## modint
 - 二項係数mod 素数　前計算O(N),クエリO(1)
 - mod素数のときの逆元O(log mod)
+## bostan_mori_algorithm
+- [x^N] P(x)/Q(x)をO(polyprod(P,Q)logN)で計算する
+## binarysearch
+- 二分探索のサンプルコード
+## bit_dp
+- bit_dpのサンプルコード
