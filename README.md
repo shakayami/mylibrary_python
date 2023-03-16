@@ -21,3 +21,11 @@
 - 二分探索のサンプルコード
 ## bit_dp
 - bit_dpのサンプルコード
+## Centroid_Decomposition
+- 木の重心分解
+## Mo_algorithm
+- Moアルゴリズム
+## floor_and_ceiling
+- 割り算の切り捨て、切り上げ
+## Fp2
+- 拡大体modint
