@@ -43,11 +43,11 @@ Mebius=[1 for i in range(MAX_N+1)]
 Mebius[0]=0
 for i in range(MAX_N+1):
     if isPrime[i]:
-        for j in range(i,MAX_N,i):
+        for j in range(i,MAX_N+1,i):
             Mebius[j]*=-1
 i=2
 while(i*i<=MAX_N):
-    for j in range(i*i,MAX_N,i*i):
+    for j in range(i*i,MAX_N+1,i*i):
         Mebius[j]=0
     i+=1
 print(Mebius[:20])
