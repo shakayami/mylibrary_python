@@ -32,9 +32,9 @@ def divisors(N):
 MAX_N=10**5
 isPrime=[True for i in range(MAX_N+1)]
 isPrime[0]=False;isPrime[1]=False
-for i in range(MAX_N):
+for i in range(MAX_N+1):
     if isPrime[i]:
-        for j in range(2*i,MAX_N,i):
+        for j in range(2*i,MAX_N+1,i):
             isPrime[j]=False
 print(isPrime[:10])
 #[False, False, True, True, False, True, False, True, False, False]
